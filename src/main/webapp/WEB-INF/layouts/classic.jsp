@@ -21,12 +21,8 @@
             display: flex;
         }
 
-        .sidebar {
-            width: 20%;
-        }
-
         .main-content {
-            width: 80%;
+            width: 100%;
         }
 
         footer {
@@ -46,9 +42,6 @@
             <tiles:insertAttribute name="header" />
         </div>
         <div class="main">
-            <div class="sidebar">
-                <tiles:insertAttribute name="menu" />
-            </div>
             <div class="main-content">
                 <tiles:insertAttribute name="body" />
             </div>
