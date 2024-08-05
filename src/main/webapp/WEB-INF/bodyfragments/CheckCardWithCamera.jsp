@@ -1,54 +1,54 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Real-time OCR with Camera</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin: 0;
-            padding: 20px;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Real-time OCR with Camera</title>
+<style>
+body {
+	font-family: Arial, sans-serif;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 0;
+	padding: 20px;
+}
 
-        video {
-            border: 1px solid black;
-        }
+video {
+	border: 1px solid black;
+}
 
-        #output {
-            margin-top: 20px;
-            font-size: 20px;
-            color: blue;
-        }
-    </style>
+#output {
+	margin-top: 20px;
+	font-size: 20px;
+	color: blue;
+}
+</style>
 </head>
 <body>
-    <h1>Real-time OCR with Camera using Azure AI Vision</h1>
-    <video id="video" width="640" height="480" autoplay></video>
-    <canvas id="canvas" width="640" height="480" style="display:none;"></canvas>
-    <p id="output">Loading camera...</p>
-    <c:if test="${not empty listANNB}">
-        <script>
+	<h1>Real-time OCR with Camera using Azure AI Vision</h1>
+	<video id="video" width="640" height="480" autoplay></video>
+	<canvas id="canvas" width="640" height="480" style="display: none;"></canvas>
+	<p id="output">Loading camera...</p>
+	<c:if test="${not empty listANNB}">
+		<script>
             var knownIds = [];
             <c:forEach var="annb" items="${listANNB}">
                 knownIds.push("${annb.id}");
             </c:forEach>
         </script>
-    </c:if>
-    <script>
+	</c:if>
+	<script>
         var video = document.getElementById('video');
         var canvas = document.getElementById('canvas');
         var context = canvas.getContext('2d');
         var output = document.getElementById('output');
 
-        var subscriptionKey = '78462fb46d5048a7a7c5e150aef5d8c6';
-        var endpoint = 'https://dhaocr.cognitiveservices.azure.com/';
+        var subscriptionKey = 'eb228cbab6aa4693ac9d34eb563fd0b1';
+        var endpoint = 'https://dhaocrvdh1.cognitiveservices.azure.com/';
         var ocrUrl = endpoint + 'vision/v3.2/ocr';
 
         // Lấy quyền truy cập camera
@@ -116,7 +116,7 @@
             canvas.toBlob(function (blob) {
                 performOCR(blob);
             }, 'image/jpeg');
-        }, 7000);
+        }, 500);
     </script>
 </body>
 </html>
