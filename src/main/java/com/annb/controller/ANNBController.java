@@ -191,4 +191,24 @@ public class ANNBController {
 		}
 		return "CheckCard";
 	}
+
+	@GetMapping("/Check-Card-With-Camera")
+	public String checkCardWithCamera(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		if (session.getAttribute("loggedInUser") == null) {
+			return "redirect:/login";
+		}
+
+		try {
+			// Giả sử bạn muốn gửi danh sách tất cả các ANNB từ cơ sở dữ liệu
+			List<ANNB> listANNB = dao.getAllANNB();
+			request.setAttribute("listANNB", listANNB);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			request.setAttribute("errorMessage", "Lỗi khi tải dữ liệu từ cơ sở dữ liệu.");
+		}
+
+		return "CheckCardWithCamera";
+	}
+
 }

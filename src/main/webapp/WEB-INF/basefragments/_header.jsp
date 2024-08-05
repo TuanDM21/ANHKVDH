@@ -78,6 +78,7 @@ body {
             <a href="Add-New-Card">Add New Card</a>
             <a href="View-All-Card">All Card</a>
             <a href="Check-Card">Check Card</a>
+            <a href="Check-Card-With-Camera">Check Card With Camera</a>
             <div class="right">
                 <span id="welcomeMessage">Hello, ${sessionScope.loggedInUser}</span>
                 <a href="logout">Logout</a>
